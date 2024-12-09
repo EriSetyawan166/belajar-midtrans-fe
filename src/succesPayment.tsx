@@ -1,5 +1,10 @@
+import { useLocation } from 'react-router-dom';
 
 function succesPayment() {
+    const location = useLocation();
+    const transactionData = location.state?.result;
+
+    console.log('Transaction Data:', transactionData);
     return (
         <div className='flex flex-col justify-start gap-10 mt-24'>
             <div className="flex items-center justify-center py-4">
@@ -31,6 +36,7 @@ function succesPayment() {
             </div >
             <div className="flex flex-row gap-10 items-start justify-center">
                 <h1 className="text-3xl font-bold">Anggep aja ini sukses</h1>
+                <pre>{JSON.stringify(transactionData, null, 2)}</pre>
             </div>
         </div >
     )

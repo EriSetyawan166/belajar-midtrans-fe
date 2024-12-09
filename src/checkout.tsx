@@ -1,6 +1,7 @@
 // src/Checkout.tsx
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 declare global {
     interface Window {
@@ -10,6 +11,7 @@ declare global {
 
 const Checkout = () => {
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
     const [error, setError] = useState<string | null>(null);
     const [isSnapVisible, setIsSnapVisible] = useState(false);
     const [formData, setFormData] = useState({
@@ -125,6 +127,7 @@ const Checkout = () => {
                 onSuccess: function (result: any) {
                     setIsSnapVisible(false);
                     console.log(result);
+                    navigate('/success-payment', { state: { result } });
                 },
                 onPending: function (result: any) {
                     alert('Waiting for payment confirmation...');
