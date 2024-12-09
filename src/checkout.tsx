@@ -124,6 +124,7 @@ const Checkout = () => {
                 embedId: 'snap-container',
                 onSuccess: function (result: any) {
                     setIsSnapVisible(false);
+                    console.log(result);
                 },
                 onPending: function (result: any) {
                     alert('Waiting for payment confirmation...');
